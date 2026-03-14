@@ -1,16 +1,19 @@
 {
-  "name": "backend",
+  "name": "Root Backend",
   "version": "1.0.0",
-  "description": "Backend of the Social Media App",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:all": "concurrently \"npm run start:auth\" \"npm run start:user\" \"npm run start:post\" \"npm run start:media\"",
+    "start:auth": "cd auth-service && node server.js",
+    "start:user": "cd user-service && node server.js",
+    "start:post": "cd post-service && node server.js",
+    "start:media": "cd media-service && node server.js"
   },
-  "author": "",
-  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
+    "dotenv": "^17.3.1",
     "mysql2": "^3.19.1"
   }
 }
