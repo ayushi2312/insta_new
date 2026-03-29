@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: media-deployment
+  namespace: media-namespace
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: media
+
+  template:
+    metadata:
+      labels:
+        app: media
+
+    spec:
+      containers:
+        - name: media
+          image: ayushi2312/media-insta
+          ports:
+            - containerPort: 3004

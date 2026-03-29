@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: post-deployment
+  namespace: post-namespace
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: post
+
+  template:
+    metadata:
+      labels:
+        app: post
+
+    spec:
+      containers:
+        - name: post
+          image: ayushi2312/post-insta
+          ports:
+            - containerPort: 3003

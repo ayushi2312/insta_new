@@ -1,0 +1,53 @@
+
+
+services:
+  auth-service:
+    build: ./Backend/auth-service
+    ports:
+      - "3001:3000"
+    env_file:
+      - ./Backend/.env
+    depends_on:
+      - mongo
+
+  user-service:
+    build: ./Backend/user-service
+    ports:
+      - "3002:3000"
+    env_file:
+      - ./Backend/.env
+    depends_on:
+      - mongo
+
+  post-service:
+    build: ./Backend/post-service
+    ports:
+      - "3003:3000"
+    env_file:
+      - ./Backend/.env
+    depends_on:
+      - mongo
+
+  media-service:
+    build: ./Backend/media-service
+    ports:
+      - "3004:3000"
+    env_file:
+      - ./Backend/.env
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - "3000:3000"
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

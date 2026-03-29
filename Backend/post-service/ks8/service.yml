@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata: 
+  name: post-services
+  namespace: post-namespace
+spec:
+  selector:
+    app: post
+  ports: 
+   - protocol: TCP
+     port: 80
+     targetPort: 3003
+  type: NodePort
