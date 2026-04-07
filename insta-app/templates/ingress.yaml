@@ -1,0 +1,50 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: insta-ingress
+  namespace: default
+spec:
+  rules:
+  - host: insta.local
+    http:
+      paths:
+
+      - path: /auth
+        pathType: Prefix
+        backend:
+          service:
+            name: auth-services
+            port:
+              number: 80
+
+      - path: /media
+        pathType: Prefix
+        backend:
+          service:
+            name: media-services
+            port:
+              number: 80
+
+      - path: /post
+        pathType: Prefix
+        backend:
+          service:
+            name: post-services
+            port:
+              number: 80
+
+      - path: /user
+        pathType: Prefix
+        backend:
+          service:
+            name: user-services
+            port:
+              number: 80
+
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: front-services
+            port:
+              number: 80

@@ -1,0 +1,27 @@
+replicaCount: 2
+
+services:
+  - name: auth-service
+    image: ayushi2312/auth:latest
+    port: 3001
+    path: /auth
+
+  - name: media-service
+    image: ayushi2312/media:latest
+    port: 3002
+    path: /media
+
+  - name: post-service
+    image: ayushi2312/post:latest
+    port: 3003
+    path: /posts
+
+  - name: user-service
+    image: ayushi2312/user:latest
+    port: 3004
+    path: /users
+
+  - name: frontend-service
+    image: ayushi2312/frontend:latest
+    port: 3000
+    path: /
